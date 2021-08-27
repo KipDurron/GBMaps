@@ -3,14 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		EC18B3C326D78CEB00F130C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC18B3C226D78CEB00F130C2 /* AppDelegate.swift */; };
 		EC18B3C526D78CEB00F130C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC18B3C426D78CEB00F130C2 /* SceneDelegate.swift */; };
-		EC18B3C726D78CEB00F130C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC18B3C626D78CEB00F130C2 /* ViewController.swift */; };
-		EC18B3CA26D78CEB00F130C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC18B3C826D78CEB00F130C2 /* Main.storyboard */; };
+		EC18B3C726D78CEB00F130C2 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC18B3C626D78CEB00F130C2 /* MapViewController.swift */; };
+		EC18B3CA26D78CEB00F130C2 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC18B3C826D78CEB00F130C2 /* Map.storyboard */; };
 		EC18B3CC26D78CEC00F130C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC18B3CB26D78CEC00F130C2 /* Assets.xcassets */; };
 		EC18B3CF26D78CEC00F130C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC18B3CD26D78CEC00F130C2 /* LaunchScreen.storyboard */; };
 		F6AB70CDDAA27338760BCC25 /* Pods_GBMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D2EE3074C7AE13E93A061BD /* Pods_GBMaps.framework */; };
@@ -23,8 +23,8 @@
 		EC18B3BF26D78CEB00F130C2 /* GBMaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GBMaps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC18B3C226D78CEB00F130C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC18B3C426D78CEB00F130C2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EC18B3C626D78CEB00F130C2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EC18B3C926D78CEB00F130C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EC18B3C626D78CEB00F130C2 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		EC18B3C926D78CEB00F130C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Map.storyboard; sourceTree = "<group>"; };
 		EC18B3CB26D78CEC00F130C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC18B3CE26D78CEC00F130C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC18B3D026D78CEC00F130C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,7 +48,6 @@
 				12845E602016A79FF8233EBC /* Pods-GBMaps.debug.xcconfig */,
 				DA27F8F04CB41AA0D0C4E482 /* Pods-GBMaps.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -76,8 +75,6 @@
 				EC18B3D626D78D3E00F130C2 /* App */,
 				EC18B3C226D78CEB00F130C2 /* AppDelegate.swift */,
 				EC18B3C426D78CEB00F130C2 /* SceneDelegate.swift */,
-				EC18B3C626D78CEB00F130C2 /* ViewController.swift */,
-				EC18B3C826D78CEB00F130C2 /* Main.storyboard */,
 				EC18B3CB26D78CEC00F130C2 /* Assets.xcassets */,
 				EC18B3CD26D78CEC00F130C2 /* LaunchScreen.storyboard */,
 				EC18B3D026D78CEC00F130C2 /* Info.plist */,
@@ -96,8 +93,42 @@
 		EC18B3D726D78D4300F130C2 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				EC18B3D826D7C51400F130C2 /* Map */,
 			);
 			path = Flows;
+			sourceTree = "<group>";
+		};
+		EC18B3D826D7C51400F130C2 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				EC18B3DB26D7C79B00F130C2 /* Presenter */,
+				EC18B3DA26D7C79500F130C2 /* Controller */,
+				EC18B3D926D7C78E00F130C2 /* View */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		EC18B3D926D7C78E00F130C2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC18B3C826D78CEB00F130C2 /* Map.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EC18B3DA26D7C79500F130C2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EC18B3C626D78CEB00F130C2 /* MapViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		EC18B3DB26D7C79B00F130C2 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		FC9585420B909289EC950F14 /* Frameworks */ = {
@@ -169,7 +200,7 @@
 			files = (
 				EC18B3CF26D78CEC00F130C2 /* LaunchScreen.storyboard in Resources */,
 				EC18B3CC26D78CEC00F130C2 /* Assets.xcassets in Resources */,
-				EC18B3CA26D78CEB00F130C2 /* Main.storyboard in Resources */,
+				EC18B3CA26D78CEB00F130C2 /* Map.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,7 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC18B3C726D78CEB00F130C2 /* ViewController.swift in Sources */,
+				EC18B3C726D78CEB00F130C2 /* MapViewController.swift in Sources */,
 				EC18B3C326D78CEB00F130C2 /* AppDelegate.swift in Sources */,
 				EC18B3C526D78CEB00F130C2 /* SceneDelegate.swift in Sources */,
 			);
@@ -231,12 +262,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		EC18B3C826D78CEB00F130C2 /* Main.storyboard */ = {
+		EC18B3C826D78CEB00F130C2 /* Map.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				EC18B3C926D78CEB00F130C2 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Map.storyboard;
 			sourceTree = "<group>";
 		};
 		EC18B3CD26D78CEC00F130C2 /* LaunchScreen.storyboard */ = {
