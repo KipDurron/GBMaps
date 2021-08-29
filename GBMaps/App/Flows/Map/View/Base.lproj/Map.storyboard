@@ -31,11 +31,23 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yin-VU-vlk">
-                        <barButtonItem key="leftBarButtonItem" title="Track" id="al1-gR-dIp">
-                            <connections>
-                                <action selector="toggleTrack:" destination="BYZ-38-t0r" id="2k2-iI-loG"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem title="Start track" id="al1-gR-dIp">
+                                <connections>
+                                    <action selector="startTrackAction:" destination="BYZ-38-t0r" id="2k2-iI-loG"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Finish track" id="m5L-YT-KH6">
+                                <connections>
+                                    <action selector="finishTrackAction:" destination="BYZ-38-t0r" id="aSs-Oe-iYD"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Previous track" id="W6Y-M8-24H">
+                                <connections>
+                                    <action selector="previousTrackAction:" destination="BYZ-38-t0r" id="iLD-5I-j6M"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" title="Current" id="5NW-Wr-Wlf">
                             <connections>
                                 <action selector="currentLocation:" destination="BYZ-38-t0r" id="4B7-uZ-rHk"/>

@@ -13,6 +13,10 @@
 		EC18B3CA26D78CEB00F130C2 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC18B3C826D78CEB00F130C2 /* Map.storyboard */; };
 		EC18B3CC26D78CEC00F130C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC18B3CB26D78CEC00F130C2 /* Assets.xcassets */; };
 		EC18B3CF26D78CEC00F130C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC18B3CD26D78CEC00F130C2 /* LaunchScreen.storyboard */; };
+		ECCF2BB526DA670000940F3F /* RealmSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF2BB426DA670000940F3F /* RealmSetting.swift */; };
+		ECCF2BB726DA680F00940F3F /* RPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF2BB626DA680F00940F3F /* RPoint.swift */; };
+		ECCF2BBA26DA6B1000940F3F /* RPointService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF2BB926DA6B1000940F3F /* RPointService.swift */; };
+		ECCF2BBD26DA795E00940F3F /* StatusTrackEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF2BBC26DA795E00940F3F /* StatusTrackEnum.swift */; };
 		F6AB70CDDAA27338760BCC25 /* Pods_GBMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D2EE3074C7AE13E93A061BD /* Pods_GBMaps.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +32,10 @@
 		EC18B3CB26D78CEC00F130C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC18B3CE26D78CEC00F130C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC18B3D026D78CEC00F130C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ECCF2BB426DA670000940F3F /* RealmSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmSetting.swift; sourceTree = "<group>"; };
+		ECCF2BB626DA680F00940F3F /* RPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPoint.swift; sourceTree = "<group>"; };
+		ECCF2BB926DA6B1000940F3F /* RPointService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPointService.swift; sourceTree = "<group>"; };
+		ECCF2BBC26DA795E00940F3F /* StatusTrackEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTrackEnum.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +80,7 @@
 		EC18B3C126D78CEB00F130C2 /* GBMaps */ = {
 			isa = PBXGroup;
 			children = (
+				ECCF2BAF26DA60B500940F3F /* Core */,
 				EC18B3D626D78D3E00F130C2 /* App */,
 				EC18B3C226D78CEB00F130C2 /* AppDelegate.swift */,
 				EC18B3C426D78CEB00F130C2 /* SceneDelegate.swift */,
@@ -131,6 +140,57 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		ECCF2BAF26DA60B500940F3F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				ECCF2BBB26DA794500940F3F /* Setting */,
+				ECCF2BB026DA60BE00940F3F /* DB */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		ECCF2BB026DA60BE00940F3F /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				ECCF2BB426DA670000940F3F /* RealmSetting.swift */,
+				ECCF2BB826DA6AF400940F3F /* Point */,
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
+		ECCF2BB226DA654A00940F3F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ECCF2BB626DA680F00940F3F /* RPoint.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ECCF2BB326DA655500940F3F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				ECCF2BB926DA6B1000940F3F /* RPointService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		ECCF2BB826DA6AF400940F3F /* Point */ = {
+			isa = PBXGroup;
+			children = (
+				ECCF2BB226DA654A00940F3F /* Model */,
+				ECCF2BB326DA655500940F3F /* Service */,
+			);
+			path = Point;
+			sourceTree = "<group>";
+		};
+		ECCF2BBB26DA794500940F3F /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				ECCF2BBC26DA795E00940F3F /* StatusTrackEnum.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		FC9585420B909289EC950F14 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +211,7 @@
 				EC18B3BC26D78CEB00F130C2 /* Frameworks */,
 				EC18B3BD26D78CEB00F130C2 /* Resources */,
 				A551FF058B8013AB2D184164 /* [CP] Copy Pods Resources */,
+				6D938487C8970959C491AFF7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -207,6 +268,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		6D938487C8970959C491AFF7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GBMaps/Pods-GBMaps-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GBMaps/Pods-GBMaps-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GBMaps/Pods-GBMaps-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A551FF058B8013AB2D184164 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -253,9 +331,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECCF2BB526DA670000940F3F /* RealmSetting.swift in Sources */,
+				ECCF2BBD26DA795E00940F3F /* StatusTrackEnum.swift in Sources */,
+				ECCF2BBA26DA6B1000940F3F /* RPointService.swift in Sources */,
 				EC18B3C726D78CEB00F130C2 /* MapViewController.swift in Sources */,
 				EC18B3C326D78CEB00F130C2 /* AppDelegate.swift in Sources */,
 				EC18B3C526D78CEB00F130C2 /* SceneDelegate.swift in Sources */,
+				ECCF2BB726DA680F00940F3F /* RPoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

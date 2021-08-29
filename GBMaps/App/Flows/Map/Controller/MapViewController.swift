@@ -10,9 +10,14 @@ import GoogleMaps
 import CoreLocation
 
 class MapViewController: UIViewController {
+    
+    let rPointService = RPointService()
     // Центр Москвы
     let startCoordinate = CLLocationCoordinate2D(latitude: 55.753215, longitude: 37.622504)
     var locationManager: CLLocationManager?
+    var route: GMSPolyline?
+    var routePath: GMSMutablePath?
+    var trackStatus: StatusTrackEnum = .initial
     
     @IBOutlet weak var mapView: GMSMapView!
     
@@ -20,8 +25,81 @@ class MapViewController: UIViewController {
         locationManager?.requestLocation()
     }
     
-    @IBAction func toggleTrack(_ sender: Any) {
-        locationManager?.startUpdatingLocation()
+    @IBAction func startTrackAction(_ sender: Any) {
+        trackStatus = .start
+        createNewPath()
+        startUpdate()
+    }
+    
+    func startUpdate() {
+        // Запускаем отслеживание или продолжаем, если оно уже запущено
+            locationManager?.startUpdatingLocation()
+            locationManager?.startMonitoringSignificantLocationChanges()
+    }
+    func stopUpdate() {
+        locationManager?.stopUpdatingLocation()
+        locationManager?.stopMonitoringSignificantLocationChanges()
+    }
+    
+    @IBAction func finishTrackAction(_ sender: Any) {
+        finishTrack()
+    }
+    
+    func createNewPath() {
+        // Отвязываем от карты старую линию
+            route?.map = nil
+        // Заменяем старую линию новой
+            route = GMSPolyline()
+        // Заменяем старый путь новым, пока пустым (без точек)
+            routePath = GMSMutablePath()
+        // Добавляем новую линию на карту
+            route?.map = mapView
+    }
+    
+    func addCoordinateToPath(points: [CLLocationCoordinate2D]) {
+        for point in points {
+            routePath?.add(point)
+        }
+        route?.path = routePath
+    }
+    
+    func finishTrack() {
+        trackStatus = .finish
+        stopUpdate()
+        guard let routePath = routePath else {return}
+        rPointService.deleteAll()
+        for indexPoint in 0..<routePath.count() {
+            rPointService.save(point: routePath.coordinate(at: indexPoint))
+        }
+    }
+    
+    @IBAction func previousTrackAction(_ sender: Any) {
+        stopUpdate()
+        if trackStatus == .start {
+            let handler = { (action: UIAlertAction) -> Void in
+                self.finishTrack()
+            }
+            createAlert(text: "Get previous path?", handler: handler)
+        }
+        let previousPoints = rPointService.load()
+        guard previousPoints.count > 0 else {
+            createAlert(text: "Not data", handler: nil)
+            return
+        }
+        self.createNewPath()
+        self.addCoordinateToPath(points: previousPoints)
+        let bounds = GMSCoordinateBounds(path: routePath!)
+        self.mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 50.0))
+        
+    }
+    
+    private func createAlert(text: String, handler: ((UIAlertAction) -> Void)?) {
+        let alert = UIAlertController(title: "Message", message: text, preferredStyle: .alert)
+        let actionOk = UIAlertAction(title: "OK", style: .default, handler: handler)
+        let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(actionCancel)
+        alert.addAction(actionOk)
+        self.present(alert, animated: true)
     }
     
     override func viewDidLoad() {
@@ -33,8 +111,10 @@ class MapViewController: UIViewController {
 
     func configureLocationManager() {
             locationManager = CLLocationManager()
-            locationManager?.requestWhenInUseAuthorization()
+            locationManager?.allowsBackgroundLocationUpdates = true
+            locationManager?.pausesLocationUpdatesAutomatically = false
             locationManager?.delegate = self
+            locationManager?.requestAlwaysAuthorization()
         }
     
     func configureMap() {
@@ -57,8 +137,6 @@ class MapViewController: UIViewController {
             locationManager?.requestWhenInUseAuthorization()
         case .restricted, .denied:
             debugPrint("denied access location by user")
-        case .authorizedAlways, .authorizedWhenInUse:
-            locationManager?.startUpdatingLocation()
         default:
             break
         }
@@ -76,7 +154,7 @@ extension MapViewController: CLLocationManagerDelegate {
         guard let coordinate = locations.last?.coordinate else {
             return
         }
-        self.addMarker(coordinate: coordinate)
+        addCoordinateToPath(points: [coordinate])
         mapView.animate(toLocation: coordinate)
     }
     
