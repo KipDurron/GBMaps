@@ -48,11 +48,6 @@
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" title="Current" id="5NW-Wr-Wlf">
-                            <connections>
-                                <action selector="currentLocation:" destination="BYZ-38-t0r" id="4B7-uZ-rHk"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="QKX-Al-h4X" id="S5G-Ji-hiG"/>

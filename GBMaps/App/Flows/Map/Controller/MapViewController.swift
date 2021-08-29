@@ -21,9 +21,9 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: GMSMapView!
     
-    @IBAction func currentLocation(_ sender: Any) {
-        locationManager?.requestLocation()
-    }
+//    @IBAction func currentLocation(_ sender: Any) {
+//        locationManager?.requestLocation()
+//    }
     
     @IBAction func startTrackAction(_ sender: Any) {
         trackStatus = .start
@@ -96,8 +96,6 @@ class MapViewController: UIViewController {
     private func createAlert(text: String, handler: ((UIAlertAction) -> Void)?) {
         let alert = UIAlertController(title: "Message", message: text, preferredStyle: .alert)
         let actionOk = UIAlertAction(title: "OK", style: .default, handler: handler)
-        let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alert.addAction(actionCancel)
         alert.addAction(actionOk)
         self.present(alert, animated: true)
     }
