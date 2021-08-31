@@ -14,14 +14,14 @@ class LoginViewController: UIViewController {
             static let password = "1"
         }
     
+    var router = LoginRouter()
+    
     @IBOutlet weak var loginView: UITextField!
     @IBOutlet weak var passwordView: UITextField!
     
     override func viewDidAppear(_ animated: Bool) {
         if UserDefaults.standard.bool(forKey: "isLogin") {
-            let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-            let mainController = mainStoryBoard.instantiateViewController(identifier: "mainId")
-            self.present(mainController, animated: true)
+            self.router.toMain()
         }
     }
     
@@ -32,21 +32,13 @@ class LoginViewController: UIViewController {
                     return
                 }
         UserDefaults.standard.set(true, forKey: "isLogin")
-        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-        let mainController = mainStoryBoard.instantiateViewController(identifier: "mainId")
-        UIApplication.shared.windows.first?.rootViewController = mainController
-        
-
+        self.router.toMain()
     }
     @IBAction func recoveryAction(_ sender: Any) {
-        let authStoryBoard = UIStoryboard(name: "Auth", bundle: nil)
-        let recoverController = authStoryBoard.instantiateViewController(identifier: "onRecover")
-        self.navigationController?.pushViewController(recoverController, animated: true)
+        self.router.toRecoveryPassword()
     }
     @IBAction func registrationAction(_ sender: Any) {
-        let authStoryBoard = UIStoryboard(name: "Auth", bundle: nil)
-        let recoverController = authStoryBoard.instantiateViewController(identifier: "regId")
-        self.navigationController?.pushViewController(recoverController, animated: true)
+        self.router.toRegistration()
     }
     
     override func viewDidLoad() {

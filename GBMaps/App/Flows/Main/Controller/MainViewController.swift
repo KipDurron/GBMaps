@@ -8,18 +8,16 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    
+    let router = MainRouter()
 
     @IBAction func toMapAction(_ sender: Any) {
-        let mapStoryBoard = UIStoryboard(name: "Map", bundle: nil)
-        let mapController = mapStoryBoard.instantiateViewController(identifier: "mapId")
-        self.navigationController?.pushViewController(mapController, animated: true)
+        self.router.toMap()
        
     }
     @IBAction func logoutAction(_ sender: Any) {
         UserDefaults.standard.set(false, forKey: "isLogin")
-        let mainStoryBoard = UIStoryboard(name: "Auth", bundle: nil)
-        let authController = mainStoryBoard.instantiateViewController(identifier: "authId")
-        UIApplication.shared.windows.first?.rootViewController = authController
+        self.router.toLogout()
         
     }
     override func viewDidLoad() {

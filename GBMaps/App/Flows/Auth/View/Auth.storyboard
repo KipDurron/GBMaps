@@ -11,7 +11,7 @@
         <!--Recovery Password View Controller-->
         <scene sceneID="cqE-2I-l9u">
             <objects>
-                <viewController storyboardIdentifier="onRecover" id="rGq-9F-LH8" customClass="RecoveryPasswordViewController" customModule="GBMaps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecoveryPasswordViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rGq-9F-LH8" customClass="RecoveryPasswordViewController" customModule="GBMaps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O0r-ru-rLy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -53,13 +53,13 @@
         <!--Login View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="authId" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="LoginViewController" customModule="GBMaps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="LoginViewController" customModule="GBMaps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="f2Y-gD-ORk">
-                                <rect key="frame" x="20" y="138" width="374" height="238"/>
+                                <rect key="frame" x="20" y="94" width="374" height="238"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Login" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ed8-Bm-hM7">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
@@ -117,7 +117,7 @@
         <!--Registration View Controller-->
         <scene sceneID="TBl-i6-Dco">
             <objects>
-                <viewController storyboardIdentifier="regId" useStoryboardIdentifierAsRestorationIdentifier="YES" id="76L-ka-7zK" customClass="RegistrationViewController" customModule="GBMaps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegistrationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="76L-ka-7zK" customClass="RegistrationViewController" customModule="GBMaps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cXz-Pj-c16">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -161,24 +161,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gu4-lE-xCz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1976.8115942028987" y="521.65178571428567"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="1pf-EG-PV0">
-            <objects>
-                <navigationController storyboardIdentifier="navAuthId" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Phr-Qc-Jyq" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1ke-yt-ANN">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="b2I-zU-SLV"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rSi-5c-EQo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="75.669642857142847"/>
         </scene>
     </scenes>
     <resources>
