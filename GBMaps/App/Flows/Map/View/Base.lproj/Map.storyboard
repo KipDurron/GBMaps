@@ -11,7 +11,7 @@
         <!--Map View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="GBMaps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mapId" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="MapViewController" customModule="GBMaps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,10 +31,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yin-VU-vlk">
-                        <leftBarButtonItems>
-                            <barButtonItem title="Start track" id="al1-gR-dIp">
+                        <rightBarButtonItems>
+                            <barButtonItem title="Previous track" id="W6Y-M8-24H">
                                 <connections>
-                                    <action selector="startTrackAction:" destination="BYZ-38-t0r" id="2k2-iI-loG"/>
+                                    <action selector="previousTrackAction:" destination="BYZ-38-t0r" id="iLD-5I-j6M"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Finish track" id="m5L-YT-KH6">
@@ -42,12 +42,12 @@
                                     <action selector="finishTrackAction:" destination="BYZ-38-t0r" id="aSs-Oe-iYD"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Previous track" id="W6Y-M8-24H">
+                            <barButtonItem title="Start track" id="al1-gR-dIp">
                                 <connections>
-                                    <action selector="previousTrackAction:" destination="BYZ-38-t0r" id="iLD-5I-j6M"/>
+                                    <action selector="startTrackAction:" destination="BYZ-38-t0r" id="2k2-iI-loG"/>
                                 </connections>
                             </barButtonItem>
-                        </leftBarButtonItems>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="QKX-Al-h4X" id="S5G-Ji-hiG"/>
@@ -60,6 +60,7 @@
         <!--Navigation Controller-->
         <scene sceneID="GtP-Cs-ndi">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SIV-Pk-9H0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Bpv-aB-nlF" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="h4U-UF-2hb">
@@ -71,7 +72,6 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ixK-fJ-L2j"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SIV-Pk-9H0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="118.52678571428571"/>
         </scene>

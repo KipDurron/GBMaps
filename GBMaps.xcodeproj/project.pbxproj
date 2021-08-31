@@ -13,6 +13,14 @@
 		EC18B3CA26D78CEB00F130C2 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC18B3C826D78CEB00F130C2 /* Map.storyboard */; };
 		EC18B3CC26D78CEC00F130C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC18B3CB26D78CEC00F130C2 /* Assets.xcassets */; };
 		EC18B3CF26D78CEC00F130C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC18B3CD26D78CEC00F130C2 /* LaunchScreen.storyboard */; };
+		ECAD3C4826DD07060054243E /* RecoveryPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAD3C4726DD07060054243E /* RecoveryPasswordViewController.swift */; };
+		ECAD3C4D26DD09820054243E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECAD3C4C26DD09820054243E /* Main.storyboard */; };
+		ECAD3C4F26DD09980054243E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAD3C4E26DD09980054243E /* MainViewController.swift */; };
+		ECAD3C5126DD0D790054243E /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAD3C5026DD0D790054243E /* RegistrationViewController.swift */; };
+		ECAD3C5626DD1EBC0054243E /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECAD3C5526DD1EBC0054243E /* Launch.storyboard */; };
+		ECAD3C5826DD1ED00054243E /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAD3C5726DD1ED00054243E /* LaunchViewController.swift */; };
+		ECC2C41526DD029D00C7578D /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECC2C41426DD029D00C7578D /* Auth.storyboard */; };
+		ECC2C41726DD030E00C7578D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC2C41626DD030E00C7578D /* LoginViewController.swift */; };
 		ECCF2BB526DA670000940F3F /* RealmSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF2BB426DA670000940F3F /* RealmSetting.swift */; };
 		ECCF2BB726DA680F00940F3F /* RPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF2BB626DA680F00940F3F /* RPoint.swift */; };
 		ECCF2BBA26DA6B1000940F3F /* RPointService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF2BB926DA6B1000940F3F /* RPointService.swift */; };
@@ -32,6 +40,14 @@
 		EC18B3CB26D78CEC00F130C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC18B3CE26D78CEC00F130C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC18B3D026D78CEC00F130C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ECAD3C4726DD07060054243E /* RecoveryPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryPasswordViewController.swift; sourceTree = "<group>"; };
+		ECAD3C4C26DD09820054243E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		ECAD3C4E26DD09980054243E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		ECAD3C5026DD0D790054243E /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		ECAD3C5526DD1EBC0054243E /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
+		ECAD3C5726DD1ED00054243E /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		ECC2C41426DD029D00C7578D /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
+		ECC2C41626DD030E00C7578D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		ECCF2BB426DA670000940F3F /* RealmSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmSetting.swift; sourceTree = "<group>"; };
 		ECCF2BB626DA680F00940F3F /* RPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPoint.swift; sourceTree = "<group>"; };
 		ECCF2BB926DA6B1000940F3F /* RPointService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPointService.swift; sourceTree = "<group>"; };
@@ -102,6 +118,9 @@
 		EC18B3D726D78D4300F130C2 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				ECAD3C5226DD1E930054243E /* Launch */,
+				ECAD3C4926DD09560054243E /* Main */,
+				ECC2C41126DD026000C7578D /* Auth */,
 				EC18B3D826D7C51400F130C2 /* Map */,
 			);
 			path = Flows;
@@ -138,6 +157,83 @@
 			children = (
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		ECAD3C4926DD09560054243E /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				ECAD3C4B26DD09720054243E /* Controller */,
+				ECAD3C4A26DD096C0054243E /* View */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		ECAD3C4A26DD096C0054243E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ECAD3C4C26DD09820054243E /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ECAD3C4B26DD09720054243E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				ECAD3C4E26DD09980054243E /* MainViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		ECAD3C5226DD1E930054243E /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				ECAD3C5426DD1EA80054243E /* Controller */,
+				ECAD3C5326DD1EA10054243E /* View */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
+		ECAD3C5326DD1EA10054243E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ECAD3C5526DD1EBC0054243E /* Launch.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ECAD3C5426DD1EA80054243E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				ECAD3C5726DD1ED00054243E /* LaunchViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		ECC2C41126DD026000C7578D /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				ECC2C41326DD026D00C7578D /* Controller */,
+				ECC2C41226DD026700C7578D /* View */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		ECC2C41226DD026700C7578D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ECC2C41426DD029D00C7578D /* Auth.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ECC2C41326DD026D00C7578D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				ECC2C41626DD030E00C7578D /* LoginViewController.swift */,
+				ECAD3C4726DD07060054243E /* RecoveryPasswordViewController.swift */,
+				ECAD3C5026DD0D790054243E /* RegistrationViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		ECCF2BAF26DA60B500940F3F /* Core */ = {
@@ -259,9 +355,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECC2C41526DD029D00C7578D /* Auth.storyboard in Resources */,
+				ECAD3C4D26DD09820054243E /* Main.storyboard in Resources */,
 				EC18B3CF26D78CEC00F130C2 /* LaunchScreen.storyboard in Resources */,
 				EC18B3CC26D78CEC00F130C2 /* Assets.xcassets in Resources */,
 				EC18B3CA26D78CEB00F130C2 /* Map.storyboard in Resources */,
+				ECAD3C5626DD1EBC0054243E /* Launch.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,10 +433,15 @@
 				ECCF2BB526DA670000940F3F /* RealmSetting.swift in Sources */,
 				ECCF2BBD26DA795E00940F3F /* StatusTrackEnum.swift in Sources */,
 				ECCF2BBA26DA6B1000940F3F /* RPointService.swift in Sources */,
+				ECAD3C5126DD0D790054243E /* RegistrationViewController.swift in Sources */,
 				EC18B3C726D78CEB00F130C2 /* MapViewController.swift in Sources */,
+				ECC2C41726DD030E00C7578D /* LoginViewController.swift in Sources */,
 				EC18B3C326D78CEB00F130C2 /* AppDelegate.swift in Sources */,
+				ECAD3C5826DD1ED00054243E /* LaunchViewController.swift in Sources */,
 				EC18B3C526D78CEB00F130C2 /* SceneDelegate.swift in Sources */,
+				ECAD3C4826DD07060054243E /* RecoveryPasswordViewController.swift in Sources */,
 				ECCF2BB726DA680F00940F3F /* RPoint.swift in Sources */,
+				ECAD3C4F26DD09980054243E /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
