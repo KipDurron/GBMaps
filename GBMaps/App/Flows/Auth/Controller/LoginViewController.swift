@@ -14,7 +14,8 @@ class LoginViewController: UIViewController {
             static let password = "1"
         }
     
-    var router = LoginRouter()
+    let router = LoginRouter()
+    let userService = RUserService()
     
     @IBOutlet weak var loginView: UITextField!
     @IBOutlet weak var passwordView: UITextField!
@@ -26,11 +27,13 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginAction(_ sender: Any) {
-        guard let login = loginView.text,
-              let password = passwordView.text,
-              login == Constants.login && password == Constants.password else {
-                    return
-                }
+        let loginText = self.loginView.text
+        let passwordText = self.passwordView.text
+        let resultCheck = self.userService.checkLoginAndPassword(login: loginText, password: passwordText)
+        guard resultCheck == nil else {
+            router.showErrorAlert(text: resultCheck!.rawValue)
+            return
+        }
         UserDefaults.standard.set(true, forKey: "isLogin")
         self.router.toMain()
     }

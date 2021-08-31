@@ -11,9 +11,16 @@ class RegistrationViewController: UIViewController {
 
     @IBOutlet weak var loginView: UITextField!
     @IBOutlet weak var passwordView: UITextField!
+    let userService = RUserService()
+    let router = RegistrationRouter()
     
     @IBAction func registrationAction(_ sender: Any) {
-        
+       let resultSave = userService.save(login: loginView.text, password: passwordView.text)
+        guard resultSave == nil else {
+            router.showErrorAlert(text: resultSave!.rawValue)
+            return
+        }
+        router.toMain()
     }
     override func viewDidLoad() {
         super.viewDidLoad()

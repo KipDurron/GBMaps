@@ -22,6 +22,10 @@
 		ECAD3C6226DE36220054243E /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAD3C6126DE36220054243E /* MainRouter.swift */; };
 		ECAD3C6526DE38710054243E /* FlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAD3C6426DE38710054243E /* FlowFactory.swift */; };
 		ECAD3C6826DE410F0054243E /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAD3C6726DE410F0054243E /* LoginRouter.swift */; };
+		ECAD3C6A26DE517B0054243E /* RUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAD3C6926DE517B0054243E /* RUser.swift */; };
+		ECAD3C6C26DE52CF0054243E /* RUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAD3C6B26DE52CF0054243E /* RUserService.swift */; };
+		ECAD3C6F26DE54C80054243E /* BaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAD3C6E26DE54C80054243E /* BaseError.swift */; };
+		ECAD3C7126DE5B780054243E /* RegistrationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAD3C7026DE5B780054243E /* RegistrationRouter.swift */; };
 		ECC2C41526DD029D00C7578D /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECC2C41426DD029D00C7578D /* Auth.storyboard */; };
 		ECC2C41726DD030E00C7578D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC2C41626DD030E00C7578D /* LoginViewController.swift */; };
 		ECCF2BB526DA670000940F3F /* RealmSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF2BB426DA670000940F3F /* RealmSetting.swift */; };
@@ -52,6 +56,10 @@
 		ECAD3C6126DE36220054243E /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
 		ECAD3C6426DE38710054243E /* FlowFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowFactory.swift; sourceTree = "<group>"; };
 		ECAD3C6726DE410F0054243E /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		ECAD3C6926DE517B0054243E /* RUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUser.swift; sourceTree = "<group>"; };
+		ECAD3C6B26DE52CF0054243E /* RUserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RUserService.swift; sourceTree = "<group>"; };
+		ECAD3C6E26DE54C80054243E /* BaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseError.swift; sourceTree = "<group>"; };
+		ECAD3C7026DE5B780054243E /* RegistrationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRouter.swift; sourceTree = "<group>"; };
 		ECC2C41426DD029D00C7578D /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		ECC2C41626DD030E00C7578D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		ECCF2BB426DA670000940F3F /* RealmSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmSetting.swift; sourceTree = "<group>"; };
@@ -193,6 +201,7 @@
 		ECAD3C5C26DE2CD10054243E /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				ECAD3C6D26DE54B20054243E /* Error */,
 				ECAD3C6326DE38410054243E /* Factory */,
 				ECAD3C5D26DE2CD60054243E /* Router */,
 			);
@@ -227,8 +236,17 @@
 			isa = PBXGroup;
 			children = (
 				ECAD3C6726DE410F0054243E /* LoginRouter.swift */,
+				ECAD3C7026DE5B780054243E /* RegistrationRouter.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		ECAD3C6D26DE54B20054243E /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				ECAD3C6E26DE54C80054243E /* BaseError.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 		ECC2C41126DD026000C7578D /* Auth */ = {
@@ -283,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				ECCF2BB626DA680F00940F3F /* RPoint.swift */,
+				ECAD3C6926DE517B0054243E /* RUser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -290,6 +309,7 @@
 		ECCF2BB326DA655500940F3F /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				ECAD3C6B26DE52CF0054243E /* RUserService.swift */,
 				ECCF2BB926DA6B1000940F3F /* RPointService.swift */,
 			);
 			path = Service;
@@ -458,18 +478,22 @@
 				ECAD3C6226DE36220054243E /* MainRouter.swift in Sources */,
 				ECCF2BBD26DA795E00940F3F /* StatusTrackEnum.swift in Sources */,
 				ECCF2BBA26DA6B1000940F3F /* RPointService.swift in Sources */,
+				ECAD3C6F26DE54C80054243E /* BaseError.swift in Sources */,
 				ECAD3C5126DD0D790054243E /* RegistrationViewController.swift in Sources */,
 				ECAD3C6526DE38710054243E /* FlowFactory.swift in Sources */,
 				ECAD3C6826DE410F0054243E /* LoginRouter.swift in Sources */,
+				ECAD3C6C26DE52CF0054243E /* RUserService.swift in Sources */,
 				EC18B3C726D78CEB00F130C2 /* MapViewController.swift in Sources */,
 				ECC2C41726DD030E00C7578D /* LoginViewController.swift in Sources */,
 				EC18B3C326D78CEB00F130C2 /* AppDelegate.swift in Sources */,
 				ECAD3C5F26DE35740054243E /* BaseRouter.swift in Sources */,
+				ECAD3C6A26DE517B0054243E /* RUser.swift in Sources */,
 				ECAD3C5B26DE2BAE0054243E /* StoryBoardExtention.swift in Sources */,
 				EC18B3C526D78CEB00F130C2 /* SceneDelegate.swift in Sources */,
 				ECAD3C4826DD07060054243E /* RecoveryPasswordViewController.swift in Sources */,
 				ECCF2BB726DA680F00940F3F /* RPoint.swift in Sources */,
 				ECAD3C4F26DD09980054243E /* MainViewController.swift in Sources */,
+				ECAD3C7126DE5B780054243E /* RegistrationRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

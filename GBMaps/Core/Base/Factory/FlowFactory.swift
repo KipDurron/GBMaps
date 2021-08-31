@@ -27,6 +27,7 @@ class FlowFactory {
     func makeRegistrationFlow() -> RegistrationViewController {
         let controller = UIStoryboard(name: "Auth", bundle: nil)
             .instantiateViewController(RegistrationViewController.self)
+        controller.router.setController(controller)
         return controller
     }
     

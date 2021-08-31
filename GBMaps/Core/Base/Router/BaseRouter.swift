@@ -32,4 +32,14 @@ class BaseRouter: NSObject {
         self.controller = controller
     }
     
+    func showMessageAlert(text: String) {
+        let controller = self.flowFactory.makeMessageFlow(text: text)
+        self.present(controller)
+    }
+    
+    func showErrorAlert(text: String) {
+        let controller = self.flowFactory.makeErrorFlow(text: text)
+        self.present(controller)
+    }
+    
 }

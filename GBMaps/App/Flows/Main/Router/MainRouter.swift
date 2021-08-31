@@ -15,6 +15,6 @@ class MainRouter: BaseRouter {
     
     func toLogout() {
         let controller = self.flowFactory.makeLoginFlow()
-        self.setAsRoot(controller)
+        self.setAsRoot(UINavigationController(rootViewController: controller))
     }
 }
