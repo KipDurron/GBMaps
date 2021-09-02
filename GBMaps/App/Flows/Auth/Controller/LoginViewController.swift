@@ -53,7 +53,10 @@ class LoginViewController: UIViewController {
     }
     
     func configBindings() {
-        self.loginViewModel.resultCheckLoginAndPassword.asObservable().subscribe(onNext:{[weak self]resultCheck in
+        self.loginViewModel.resultCheckLoginAndPassword
+            .asObservable()
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext:{[weak self]resultCheck in
             guard resultCheck == nil else {
                 self?.router.showErrorAlert(text: resultCheck!.rawValue)
                 return
