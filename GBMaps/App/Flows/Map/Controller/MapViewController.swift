@@ -8,34 +8,93 @@
 import UIKit
 import GoogleMaps
 import CoreLocation
+import RxSwift
 
 class MapViewController: UIViewController {
+    
+    let rPointService = RPointService()
     // Центр Москвы
     let startCoordinate = CLLocationCoordinate2D(latitude: 55.753215, longitude: 37.622504)
-    var locationManager: CLLocationManager?
+    var route: GMSPolyline?
+    var routePath: GMSMutablePath?
+    var trackStatus: StatusTrackEnum = .initial
+    let locationManager = LocationManager.instance
+    let disposeBag = DisposeBag()
     
     @IBOutlet weak var mapView: GMSMapView!
     
-    @IBAction func currentLocation(_ sender: Any) {
-        locationManager?.requestLocation()
+    @IBAction func startTrackAction(_ sender: Any) {
+        trackStatus = .start
+        createNewPath()
+        locationManager.startUpdatingLocation()
     }
     
-    @IBAction func toggleTrack(_ sender: Any) {
-        locationManager?.startUpdatingLocation()
+    @IBAction func finishTrackAction(_ sender: Any) {
+        finishTrack()
+    }
+    
+    func createNewPath() {
+        // Отвязываем от карты старую линию
+            route?.map = nil
+        // Заменяем старую линию новой
+            route = GMSPolyline()
+        // Заменяем старый путь новым, пока пустым (без точек)
+            routePath = GMSMutablePath()
+        // Добавляем новую линию на карту
+            route?.map = mapView
+    }
+    
+    func addCoordinateToPath(points: [CLLocationCoordinate2D]) {
+        for point in points {
+            routePath?.add(point)
+        }
+        route?.path = routePath
+    }
+    
+    func finishTrack() {
+        trackStatus = .finish
+        locationManager.stopUpdatingLocation()
+        guard let routePath = routePath else {return}
+        rPointService.deleteAll()
+        for indexPoint in 0..<routePath.count() {
+            rPointService.save(point: routePath.coordinate(at: indexPoint))
+        }
+    }
+    
+    @IBAction func previousTrackAction(_ sender: Any) {
+        locationManager.stopUpdatingLocation()
+        if trackStatus == .start {
+            let handler = { (action: UIAlertAction) -> Void in
+                self.finishTrack()
+            }
+            createAlert(text: "Get previous path?", handler: handler)
+        }
+        let previousPoints = rPointService.load()
+        guard previousPoints.count > 0 else {
+            createAlert(text: "Not data", handler: nil)
+            return
+        }
+        self.createNewPath()
+        self.addCoordinateToPath(points: previousPoints)
+        let bounds = GMSCoordinateBounds(path: routePath!)
+        self.mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 50.0))
+        
+    }
+    
+    private func createAlert(text: String, handler: ((UIAlertAction) -> Void)?) {
+        let alert = UIAlertController(title: "Message", message: text, preferredStyle: .alert)
+        let actionOk = UIAlertAction(title: "OK", style: .default, handler: handler)
+        alert.addAction(actionOk)
+        self.present(alert, animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureMap()
-        configureLocationManager()
-        checkLocationStatus()
+        locationManager.checkLocationStatus()
+        configureLocationManagerSubscribe()
     }
 
-    func configureLocationManager() {
-            locationManager = CLLocationManager()
-            locationManager?.requestWhenInUseAuthorization()
-            locationManager?.delegate = self
-        }
     
     func configureMap() {
         // Создаём камеру с использованием координат и уровнем увеличения
@@ -45,24 +104,23 @@ class MapViewController: UIViewController {
         mapView.delegate = self
     }
     
+    func configureLocationManagerSubscribe() {
+           locationManager
+               .location
+               .asObservable()
+            .subscribe(onNext: { [weak self] location in
+                guard let location = location else { return }
+                self?.addCoordinateToPath(points: [location.coordinate])
+                self?.mapView.animate(toLocation: location.coordinate)
+               }).disposed(by: disposeBag)
+    }
+    
     func addMarker(coordinate: CLLocationCoordinate2D) {
         let marker = GMSMarker(position: coordinate)
         marker.map = mapView
         }
     
-    private func checkLocationStatus() {
-        let locationStatus = locationManager?.authorizationStatus
-        switch locationStatus {
-        case .notDetermined:
-            locationManager?.requestWhenInUseAuthorization()
-        case .restricted, .denied:
-            debugPrint("denied access location by user")
-        case .authorizedAlways, .authorizedWhenInUse:
-            locationManager?.startUpdatingLocation()
-        default:
-            break
-        }
-    }
+
 }
 
 extension MapViewController: GMSMapViewDelegate {
@@ -71,17 +129,4 @@ extension MapViewController: GMSMapViewDelegate {
         }
 }
 
-extension MapViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let coordinate = locations.last?.coordinate else {
-            return
-        }
-        self.addMarker(coordinate: coordinate)
-        mapView.animate(toLocation: coordinate)
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
-    }
-}
 

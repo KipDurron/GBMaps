@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Bpv-aB-nlF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -11,13 +11,13 @@
         <!--Map View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="GBMaps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="MapViewController" customModule="GBMaps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QKX-Al-h4X" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
@@ -30,43 +30,52 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QKX-Al-h4X" secondAttribute="trailing" id="rWO-em-W0g"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="yin-VU-vlk">
-                        <barButtonItem key="leftBarButtonItem" title="Track" id="al1-gR-dIp">
-                            <connections>
-                                <action selector="toggleTrack:" destination="BYZ-38-t0r" id="2k2-iI-loG"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Current" id="5NW-Wr-Wlf">
-                            <connections>
-                                <action selector="currentLocation:" destination="BYZ-38-t0r" id="4B7-uZ-rHk"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Previous track" id="W6Y-M8-24H">
+                                <connections>
+                                    <action selector="previousTrackAction:" destination="BYZ-38-t0r" id="iLD-5I-j6M"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Finish track" id="m5L-YT-KH6">
+                                <connections>
+                                    <action selector="finishTrackAction:" destination="BYZ-38-t0r" id="aSs-Oe-iYD"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Start track" id="al1-gR-dIp">
+                                <connections>
+                                    <action selector="startTrackAction:" destination="BYZ-38-t0r" id="2k2-iI-loG"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="QKX-Al-h4X" id="S5G-Ji-hiG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="118.52678571428571"/>
+            <point key="canvasLocation" x="944.92753623188412" y="83.705357142857139"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="GtP-Cs-ndi">
+        <scene sceneID="M6F-NS-1rs">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Bpv-aB-nlF" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mTw-IO-xXx" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="h4U-UF-2hb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GEA-iG-n8g">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ixK-fJ-L2j"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="b1k-uV-E1D"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SIV-Pk-9H0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uqI-fe-Q1q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="118.52678571428571"/>
+            <point key="canvasLocation" x="34.782608695652179" y="83.705357142857139"/>
         </scene>
     </scenes>
     <resources>
