@@ -106,6 +106,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="6eF-hI-Xnf"/>
                     <connections>
+                        <outlet property="loginButton" destination="8Ez-Kq-Xth" id="Dbt-OH-YQf"/>
                         <outlet property="loginView" destination="ed8-Bm-hM7" id="yRH-KF-y8z"/>
                         <outlet property="passwordView" destination="rhR-E4-4if" id="JA3-ly-Ijb"/>
                     </connections>
