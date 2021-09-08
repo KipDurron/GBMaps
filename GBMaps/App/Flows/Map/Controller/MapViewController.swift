@@ -8,37 +8,25 @@
 import UIKit
 import GoogleMaps
 import CoreLocation
+import RxSwift
 
 class MapViewController: UIViewController {
     
     let rPointService = RPointService()
     // Центр Москвы
     let startCoordinate = CLLocationCoordinate2D(latitude: 55.753215, longitude: 37.622504)
-    var locationManager: CLLocationManager?
     var route: GMSPolyline?
     var routePath: GMSMutablePath?
     var trackStatus: StatusTrackEnum = .initial
+    let locationManager = LocationManager.instance
+    let disposeBag = DisposeBag()
     
     @IBOutlet weak var mapView: GMSMapView!
-    
-//    @IBAction func currentLocation(_ sender: Any) {
-//        locationManager?.requestLocation()
-//    }
     
     @IBAction func startTrackAction(_ sender: Any) {
         trackStatus = .start
         createNewPath()
-        startUpdate()
-    }
-    
-    func startUpdate() {
-        // Запускаем отслеживание или продолжаем, если оно уже запущено
-            locationManager?.startUpdatingLocation()
-            locationManager?.startMonitoringSignificantLocationChanges()
-    }
-    func stopUpdate() {
-        locationManager?.stopUpdatingLocation()
-        locationManager?.stopMonitoringSignificantLocationChanges()
+        locationManager.startUpdatingLocation()
     }
     
     @IBAction func finishTrackAction(_ sender: Any) {
@@ -65,7 +53,7 @@ class MapViewController: UIViewController {
     
     func finishTrack() {
         trackStatus = .finish
-        stopUpdate()
+        locationManager.stopUpdatingLocation()
         guard let routePath = routePath else {return}
         rPointService.deleteAll()
         for indexPoint in 0..<routePath.count() {
@@ -74,7 +62,7 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func previousTrackAction(_ sender: Any) {
-        stopUpdate()
+        locationManager.stopUpdatingLocation()
         if trackStatus == .start {
             let handler = { (action: UIAlertAction) -> Void in
                 self.finishTrack()
@@ -103,17 +91,10 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureMap()
-        configureLocationManager()
-        checkLocationStatus()
+        locationManager.checkLocationStatus()
+        configureLocationManagerSubscribe()
     }
 
-    func configureLocationManager() {
-            locationManager = CLLocationManager()
-            locationManager?.allowsBackgroundLocationUpdates = true
-            locationManager?.pausesLocationUpdatesAutomatically = false
-            locationManager?.delegate = self
-            locationManager?.requestAlwaysAuthorization()
-        }
     
     func configureMap() {
         // Создаём камеру с использованием координат и уровнем увеличения
@@ -123,22 +104,23 @@ class MapViewController: UIViewController {
         mapView.delegate = self
     }
     
+    func configureLocationManagerSubscribe() {
+           locationManager
+               .location
+               .asObservable()
+            .subscribe(onNext: { [weak self] location in
+                guard let location = location else { return }
+                self?.addCoordinateToPath(points: [location.coordinate])
+                self?.mapView.animate(toLocation: location.coordinate)
+               }).disposed(by: disposeBag)
+    }
+    
     func addMarker(coordinate: CLLocationCoordinate2D) {
         let marker = GMSMarker(position: coordinate)
         marker.map = mapView
         }
     
-    private func checkLocationStatus() {
-        let locationStatus = locationManager?.authorizationStatus
-        switch locationStatus {
-        case .notDetermined:
-            locationManager?.requestWhenInUseAuthorization()
-        case .restricted, .denied:
-            debugPrint("denied access location by user")
-        default:
-            break
-        }
-    }
+
 }
 
 extension MapViewController: GMSMapViewDelegate {
@@ -147,17 +129,4 @@ extension MapViewController: GMSMapViewDelegate {
         }
 }
 
-extension MapViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let coordinate = locations.last?.coordinate else {
-            return
-        }
-        addCoordinateToPath(points: [coordinate])
-        mapView.animate(toLocation: coordinate)
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
-    }
-}
 
