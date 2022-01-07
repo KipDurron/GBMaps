@@ -1,17 +1,17 @@
+////
+////  RegistrationRouter.swift
+////  GBMaps
+////
+////  Created by Илья Кадыров on 31.08.2021.
+////
 //
-//  RegistrationRouter.swift
-//  GBMaps
+//import UIKit
 //
-//  Created by Илья Кадыров on 31.08.2021.
+//class RegistrationRouter: BaseRouter {
+//    func toMain() {
+//        let controller = self.flowFactory.makeMainFlow()
+//        self.setAsRoot(UINavigationController(rootViewController: controller))
+//       }
+//    
 //
-
-import UIKit
-
-class RegistrationRouter: BaseRouter {
-    func toMain() {
-        let controller = self.flowFactory.makeMainFlow()
-        self.setAsRoot(UINavigationController(rootViewController: controller))
-       }
-    
-
-}
+//}

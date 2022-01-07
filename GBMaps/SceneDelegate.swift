@@ -10,6 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var coordinator: ApplicationCoordinator?
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -18,16 +19,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let scene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: scene)
-        let startViewController: UIViewController
-        let flowFactory = FlowFactory()
-        if UserDefaults.standard.bool(forKey: "isLogin") {
-            startViewController = flowFactory.makeMainFlow()
-
-        } else {
-            startViewController = flowFactory.makeLoginFlow()
-        }
-        self.window?.rootViewController = UINavigationController(rootViewController: startViewController)
         self.window?.makeKeyAndVisible()
+        coordinator = ApplicationCoordinator()
+        coordinator?.start()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

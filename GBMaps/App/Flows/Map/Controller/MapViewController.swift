@@ -12,6 +12,9 @@ import RxSwift
 
 class MapViewController: UIViewController {
     
+    var usselesExampleVariable = ""
+
+    
     let rPointService = RPointService()
     // Центр Москвы
     let startCoordinate = CLLocationCoordinate2D(latitude: 55.753215, longitude: 37.622504)

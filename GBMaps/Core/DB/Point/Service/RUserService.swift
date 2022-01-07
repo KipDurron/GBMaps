@@ -33,7 +33,10 @@ class RUserService {
                 realm.beginWrite()
                 realm.add(rUser)
                 try realm.commitWrite()
+            } else {
+                return BaseError.userAlreidyExist
             }
+            
         } catch {
             debugPrint(error)
         }

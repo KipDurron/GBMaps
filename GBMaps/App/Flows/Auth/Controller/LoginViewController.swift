@@ -18,7 +18,6 @@ class LoginViewController: UIViewController {
     
     let bag = DisposeBag()
     
-    let router = LoginRouter()
     let userService = RUserService()
     let loginViewModel = LoginViewModel()
     
@@ -26,11 +25,10 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordView: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
-    override func viewDidAppear(_ animated: Bool) {
-        if UserDefaults.standard.bool(forKey: "isLogin") {
-            self.router.toMain()
-        }
-    }
+    var onMain: (()->Void)?
+    var onRecover: (()->Void)?
+    var onRegistration: (()->Void)?
+    var onMessage: ((Bool, String)->Void)?
     
     @IBAction func loginAction(_ sender: Any) {
         let loginText = self.loginView.text
@@ -39,11 +37,11 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func recoveryAction(_ sender: Any) {
-        self.router.toRecoveryPassword()
+        onRecover?()
     }
     
     @IBAction func registrationAction(_ sender: Any) {
-        self.router.toRegistration()
+        onRegistration?()
     }
     
     override func viewDidLoad() {
@@ -58,11 +56,11 @@ class LoginViewController: UIViewController {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext:{[weak self]resultCheck in
             guard resultCheck == nil else {
-                self?.router.showErrorAlert(text: resultCheck!.rawValue)
+                self?.onMessage?(true, resultCheck?.rawValue ?? "")
                 return
             }
             UserDefaults.standard.set(true, forKey: "isLogin")
-            self?.router.toMain()
+            self?.onMain?()
         }).disposed(by: bag)
     }
     

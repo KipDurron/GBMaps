@@ -13,6 +13,10 @@
 		EC18B3CA26D78CEB00F130C2 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC18B3C826D78CEB00F130C2 /* Map.storyboard */; };
 		EC18B3CC26D78CEC00F130C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC18B3CB26D78CEC00F130C2 /* Assets.xcassets */; };
 		EC18B3CF26D78CEC00F130C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC18B3CD26D78CEC00F130C2 /* LaunchScreen.storyboard */; };
+		EC4CFD1727874E0B009694A4 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4CFD1627874E0B009694A4 /* BaseCoordinator.swift */; };
+		EC4CFD1927876B04009694A4 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4CFD1827876B04009694A4 /* ApplicationCoordinator.swift */; };
+		EC4CFD1C27876D6E009694A4 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4CFD1B27876D6E009694A4 /* MainCoordinator.swift */; };
+		EC4CFD1F278773C6009694A4 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4CFD1E278773C6009694A4 /* AuthCoordinator.swift */; };
 		EC5E5E1326E0BD2E00693F47 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5E5E1226E0BD2E00693F47 /* LocationManager.swift */; };
 		EC5E5E1626E0DA1900693F47 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5E5E1526E0DA1900693F47 /* LoginViewModel.swift */; };
 		ECAD3C4826DD07060054243E /* RecoveryPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAD3C4726DD07060054243E /* RecoveryPasswordViewController.swift */; };
@@ -49,6 +53,10 @@
 		EC18B3CB26D78CEC00F130C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC18B3CE26D78CEC00F130C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC18B3D026D78CEC00F130C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC4CFD1627874E0B009694A4 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		EC4CFD1827876B04009694A4 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
+		EC4CFD1B27876D6E009694A4 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		EC4CFD1E278773C6009694A4 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		EC5E5E1226E0BD2E00693F47 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		EC5E5E1526E0DA1900693F47 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		ECAD3C4726DD07060054243E /* RecoveryPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryPasswordViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				EC18B3D726D78D4300F130C2 /* Flows */,
+				EC4CFD1827876B04009694A4 /* ApplicationCoordinator.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -169,6 +178,30 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		EC4CFD1527874DF7009694A4 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				EC4CFD1627874E0B009694A4 /* BaseCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		EC4CFD1A27876D5E009694A4 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				EC4CFD1B27876D6E009694A4 /* MainCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		EC4CFD1D278773B3009694A4 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				EC4CFD1E278773C6009694A4 /* AuthCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		EC5E5E1126E0BD1D00693F47 /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +221,7 @@
 		ECAD3C4926DD09560054243E /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				EC4CFD1A27876D5E009694A4 /* Coordinator */,
 				ECAD3C6026DE36120054243E /* Router */,
 				ECAD3C4B26DD09720054243E /* Controller */,
 				ECAD3C4A26DD096C0054243E /* View */,
@@ -222,6 +256,7 @@
 		ECAD3C5C26DE2CD10054243E /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				EC4CFD1527874DF7009694A4 /* Coordinator */,
 				ECAD3C6D26DE54B20054243E /* Error */,
 				ECAD3C6326DE38410054243E /* Factory */,
 				ECAD3C5D26DE2CD60054243E /* Router */,
@@ -273,6 +308,7 @@
 		ECC2C41126DD026000C7578D /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				EC4CFD1D278773B3009694A4 /* Coordinator */,
 				EC5E5E1426E0D98800693F47 /* ViewModel */,
 				ECAD3C6626DE40FD0054243E /* Router */,
 				ECC2C41326DD026D00C7578D /* Controller */,
@@ -509,15 +545,19 @@
 				EC18B3C726D78CEB00F130C2 /* MapViewController.swift in Sources */,
 				ECC2C41726DD030E00C7578D /* LoginViewController.swift in Sources */,
 				EC18B3C326D78CEB00F130C2 /* AppDelegate.swift in Sources */,
+				EC4CFD1C27876D6E009694A4 /* MainCoordinator.swift in Sources */,
+				EC4CFD1F278773C6009694A4 /* AuthCoordinator.swift in Sources */,
 				ECAD3C5F26DE35740054243E /* BaseRouter.swift in Sources */,
 				ECAD3C6A26DE517B0054243E /* RUser.swift in Sources */,
 				ECAD3C5B26DE2BAE0054243E /* StoryBoardExtention.swift in Sources */,
+				EC4CFD1727874E0B009694A4 /* BaseCoordinator.swift in Sources */,
 				EC18B3C526D78CEB00F130C2 /* SceneDelegate.swift in Sources */,
 				ECAD3C4826DD07060054243E /* RecoveryPasswordViewController.swift in Sources */,
 				EC5E5E1326E0BD2E00693F47 /* LocationManager.swift in Sources */,
 				ECCF2BB726DA680F00940F3F /* RPoint.swift in Sources */,
 				ECAD3C4F26DD09980054243E /* MainViewController.swift in Sources */,
 				ECAD3C7126DE5B780054243E /* RegistrationRouter.swift in Sources */,
+				EC4CFD1927876B04009694A4 /* ApplicationCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,15 +9,19 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    let router = MainRouter()
+    
+    var onMap: ((String) -> Void)?
+    var onLogout: (() -> Void)?
+    
+    
 
     @IBAction func toMapAction(_ sender: Any) {
-        self.router.toMap()
+        onMap?("Пример")
        
     }
     @IBAction func logoutAction(_ sender: Any) {
         UserDefaults.standard.set(false, forKey: "isLogin")
-        self.router.toLogout()
+        onLogout?()
         
     }
     override func viewDidLoad() {

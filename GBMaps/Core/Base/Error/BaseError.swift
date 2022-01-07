@@ -11,4 +11,5 @@ enum BaseError: String {
     case notExistUser = "User dont exist"
     case badPassword = "Bad password"
     case emptyLoginOrPassword = "Empty login or password"
+    case userAlreidyExist = "User already exist"
 }
